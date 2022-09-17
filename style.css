@@ -1,0 +1,94 @@
+body {
+    background-color: rgb(26, 26, 26);
+}
+
+#main {
+    display: flex;
+    flex-wrap: wrap;
+    padding-top: 50px;
+    padding: 50px;
+    margin: 0 auto;
+    max-width: 1000px;
+    background-color: rgb(3, 3, 55);
+    color: white;
+    text-align: center;
+}
+
+.tamanho {
+    width: 100%;
+    margin: 10px auto;
+    padding: 15px;
+}
+
+.background {
+    background-color: rgb(17, 56, 128);
+}
+
+.borda {
+    border: solid 1px black;
+    border-radius: 10px;
+}
+
+.lista {
+    list-style-type: none;
+    padding: 0;
+}
+
+.informacoes .lista{
+    text-align: left;
+}
+
+.info div ul li a {
+    text-decoration: none;
+}
+
+.foto {
+    display: flex;
+    justify-content: center;
+}
+
+.informacoes {
+    display: flex;
+    flex-wrap: wrap;
+    min-width: 100%;
+    justify-content: center;
+}
+
+.informacoes h1 {
+    width: 100%;
+}
+
+.info .foto img {
+    max-width: 200px;
+    max-height: 200px;
+    border-radius: 50%;
+}
+
+.tabela {
+    width: 100%;
+    margin: 10px auto;
+    padding: 10px;
+}
+
+table {
+    margin: 0 auto;
+    width: 100%;
+    border-radius: 5px;
+    border: solid 1px white;
+}
+
+@media screen and (min-width: 700px) and (max-width: 1500px) {
+    .tamanho {
+        width: 45%;
+        margin: 10px auto;
+        padding: 15px;
+    }
+}
+
+@media screen and (min-width: 1501px){
+    .tamanho {
+        width: 46.5%;
+        margin: 10px auto;
+        padding: 15px;
+    }
+}
