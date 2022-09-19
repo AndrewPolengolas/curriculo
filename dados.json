@@ -1,0 +1,57 @@
+{
+    "nome": "Andrew do Nascimento",
+    "imagem": "url-imagem",
+    "email": "andrewnd2009@gmail.com",
+    "telefone": "(11) 95470-2059",
+    "dataNascimento": "26/05/2000",
+    "linkedin": "https://www.linkedin.com/in/andrew-do-nascimento-dornelas-47277917a/",
+    "github": "https://github.com/AndrewPolengolas",
+    "experienciasProfissionais": [
+        {
+            "empresa": "MJV Technology & Innovation Desenvolvedor",
+            "cargo": "Desenvolvedor Java Junior",
+            "tempoEmpresa": "julho de 2021 - Atual (4 meses)"
+        },
+        {
+            "empresa": "MJV Technology & Innovation",
+            "cargo": "Java Trainee",
+            "tempoEmpresa": "julho de 2021 - maio 2022 (8 meses)"
+        }
+    ],
+    "formacaoAcademica": [
+        {
+            "curso": "Ensino médio integrado ao técnico em eletrônica",
+            "instituicao": "ETEC Guaracy Silveira.",
+            "conclusao": "Conclusão: dezembro 2018"
+        },
+        {
+            "curso": "Análise e Desenvolvimento de Sistemas",
+            "instituicao": "Senac Campus Santo Amaro",
+            "conclusao": "Conclusão: 2023 (Estudando atualmente)"
+        }
+    ],
+    "conhecimentos": [
+        "Java",
+        "Spring boot",
+        "MySql",
+        "Oracle Sql",
+        "HTML",
+        "CSS",
+        "JavaScript",
+        "Jira"
+    ],
+    "idiomas": [
+        {
+            "idioma": "Inglês",
+            "leitura": "Bom",
+            "escrita": "Ruim",
+            "conversacao": "Ruim"
+        },
+        {
+            "idioma": "Espanhol",
+            "leitura": "Bom",
+            "escrita": "Ruim",
+            "conversacao": "Ruim"
+        }
+    ]
+}

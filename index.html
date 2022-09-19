@@ -19,16 +19,14 @@
             </div>
 
             <div class="informacoes">
-                <h1>Andrew do Nascimento</h1>
+                <h1 id="nome"></h1>
 
                 <ul class="lista">
-                    <li>(11) 95470-2059</li>
-                    <li>andrewnd2009@gmail.com</li>
-                    <li>Data de nascimento: 26/05/2000</li>
-                    <li>linkedin: <a
-                            href="https://www.linkedin.com/in/andrew-do-nascimento-dornelas-47277917a/">inkedin.com/in/andrew-do-nascimento</a>
-                    </li>
-                    <li>GitHub: <a href="https://github.com/AndrewPolengolas">github.com/AndrewPolengolas</a></li>
+                    <li id="telefone"></li>
+                    <li id="email"></li>
+                    <li id="dataNascimento"></li>
+                    <li id="linkedin"></li>
+                    <li id="github"></li>
                 </ul>
             </div>
 
@@ -36,42 +34,20 @@
 
         <div class="tamanho borda background">
             <h2>Experiencia profissional</h2>
-            <h3>MJV Technology & Innovation Desenvolvedor Java Junior</h3>
-            <p>Resumo: Trabalho atualmente em uma célula ágil para um projeto da Bradesco Seguros dentro da MJV, onde
-                atuo como desenvolvedor java junior. Tenho como função desenvolver novas funcionalidades e manter o
-                ambiente em pleno funcionamento, usando tecnologias como Java, Oracle SQL, WebSphere, Jira e outros.</p>
-            <p>julho de 2021 - Atual (3 meses)</p>
-            <br>
-            <h3>MJV Technology & Innovation Trainee Java</h3>
-            <p>julho de 2021 - maio 2022 (8 meses)</p>
-            </ul>
+
+            <ul class="lista" id="experienciasProfissionais"></ul>
         </div>
 
         <div class="conhecimentos tamanho borda background">
             <h2>Conhecimentos</h2>
 
-            <ul class="lista">
-                <li>Java</li>
-                <li>Spring boot</li>
-                <li>MySql</li>
-                <li>Oracle Sql</li>
-                <li>HTML</li>
-                <li>CSS</li>
-                <li>JavaScript</li>
-                <li>Jira</li>
-            </ul>
+            <ul class="lista" id="conhecimentos"></ul>
         </div>
 
         <div class="tamanho borda background">
             <h2>Formação</h2>
 
-            <h3>Ensino médio integrado ao técnico em eletrônica</h3>
-            <p>ETEC Guaracy Silveira.</p>
-            <p>Conclusão: dezembro 2018</p>
-            <br>
-            <h3>Análise e Desenvolvimento de Sistemas</h3>
-            <p>Senac Campus Santo Amaro</p>
-            <p>Conclusão: 2023 (Estudando atualmente)</p>
+            <ul class="lista" id="formacaoAcademica"></ul>
         </div>
 
         <div class="tabela borda background">
@@ -84,30 +60,91 @@
                         <th>Conversação</th>
                     </tr>
                 </thead>
-                <tbody>
-                    <tr>
-                        <td>Inglês</td>
-                        <td>Médio</td>
-                        <td>Ruim</td>
-                        <td>Ruim</td>
-                    </tr>
-                    <tr>
-                        <td>Espanhol</td>
-                        <td>Médio</td>
-                        <td>Ruim</td>
-                        <td>Ruim</td>
-                    </tr>
-                    <tr>
-                        <td>Chinês</td>
-                        <td>Ruim</td>
-                        <td>Ruim</td>
-                        <td>Ruim</td>
-                    </tr>
+                <tbody id="tbody">
+
                 </tbody>
             </table>
         </div>
 
     </div>
+
+    <script>
+        const xhr = new XMLHttpRequest();
+        xhr.open('GET', 'dados.json');
+
+        xhr.onload = function () {
+            if (xhr.status >= 200 && xhr.status < 400) {
+
+                let dados = JSON.parse(xhr.responseText)
+                document.getElementById('nome').innerHTML = dados.nome;
+                document.getElementById('dataNascimento').innerHTML = `Data de Nascimento: ${dados.dataNascimento}`;
+                document.getElementById('email').innerHTML = `E-mail: ${dados.email}`;
+                document.getElementById('telefone').innerHTML = dados.telefone;
+
+                let textLinkedin = 'linkedin.com/in/andrew-do-nascimento';
+                document.getElementById('linkedin').innerHTML = `LinkedIn: ${textLinkedin.link(dados.linkedin)}`;
+
+                let textGitHub = 'github.com/AndrewPolengolas';
+                document.getElementById('github').innerHTML = `GitHub: ${textGitHub.link(dados.github)}`;
+
+                document.getElementById('conhecimentos').innerHTML = '';
+                for (const conhecimento of dados.conhecimentos) {
+                    document.getElementById('conhecimentos').insertAdjacentHTML('beforeend', '<li>' + conhecimento + '</li>')
+                }
+
+                document.getElementById('formacaoAcademica').innerHTML = '';
+                for (const formacaoAcademica of dados.formacaoAcademica) {
+                    document.getElementById('formacaoAcademica').insertAdjacentHTML('beforeend', '<li><h3>' + formacaoAcademica.curso + '</h3></li>')
+                    document.getElementById('formacaoAcademica').insertAdjacentHTML('beforeend', '<li>' + formacaoAcademica.instituicao + '</li>')
+                    document.getElementById('formacaoAcademica').insertAdjacentHTML('beforeend', '<li>' + formacaoAcademica.conclusao + '</li><br>')
+                }
+
+                document.getElementById('experienciasProfissionais').innerHTML = '';
+                for (const experienciasProfissionais of dados.experienciasProfissionais) {
+                    document.getElementById('experienciasProfissionais').insertAdjacentHTML('beforeend', '<li><h3>' + experienciasProfissionais.empresa + '</h3></li>')
+                    document.getElementById('experienciasProfissionais').insertAdjacentHTML('beforeend', '<li>' + experienciasProfissionais.cargo + '</li>')
+                    document.getElementById('experienciasProfissionais').insertAdjacentHTML('beforeend', '<li>' + experienciasProfissionais.tempoEmpresa + '</li><br>')
+                }
+
+                let tbody = document.getElementById('tbody');
+                for (const idiomas of dados.idiomas) {
+                    let tr = tbody.insertRow();
+
+                    let tdIdioma = tr.insertCell();
+                    let tdLeitura = tr.insertCell();
+                    let tdEscria = tr.insertCell();
+                    let tdConversacao = tr.insertCell();
+
+                    tdIdioma.innerText = idiomas.idioma
+                    tdLeitura.innerText = idiomas.leitura
+                    tdEscria.innerText = idiomas.escrita
+                    tdConversacao.innerText = idiomas.conversacao
+                }
+
+
+                console.log(dados.idiomas.length)
+
+            }
+        };
+
+
+       /* function listaTabela() {
+            let tbody = document.getElementById('tbody');
+
+            for (let i = 0; dados.idiomas.length; i++) {
+                let tr = tbody.insertRow();
+
+                let tdIdioma = tr.insertCell();
+                let tdLeitura = tr.insertCell();
+                let tdEscria = tr.insertCell();
+                let tdConversacao = tr.insertCell();
+
+            }
+        }*/
+
+        xhr.send();
+
+    </script>
 </body>
 
 </html>

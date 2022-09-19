@@ -14,6 +14,10 @@ body {
     text-align: center;
 }
 
+h2{
+    color: rgb(3, 3, 55);
+}
+
 .tamanho {
     width: 100%;
     margin: 10px auto;
